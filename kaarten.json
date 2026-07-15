@@ -1,0 +1,26 @@
+{
+  "versie": "M1",
+  "taal": "nl",
+  "kaarten": [
+    {"id":0,"blauw":["Johan Cruijff","Eiffeltoren","Stroopwafel","Frozen","Tandarts"],"geel":["André Hazes","Waddenzee","Bitterbal","Harry Potter","Kapper"]},
+    {"id":1,"blauw":["Max Verstappen","Grand Canyon","Poffertjes","The Lion King","Brandweerman"],"geel":["Rembrandt","Noordzee","Erwtensoep","Shrek","Piloot"]},
+    {"id":2,"blauw":["Beyoncé","Amsterdam","Kroket","Star Wars","Loodgieter"],"geel":["Vincent van Gogh","Mount Everest","Pannenkoek","Titanic","Dierenarts"]},
+    {"id":3,"blauw":["Elon Musk","Sahara","Hagelslag","Jurassic Park","Postbode"],"geel":["Anne Frank","Rotterdam","Boerenkool","Toy Story","Bakker"]},
+    {"id":4,"blauw":["Michael Jackson","Alpen","Frikandel","James Bond","Advocaat"],"geel":["Willem-Alexander","Texel","Appeltaart","Spider-Man","Slager"]},
+    {"id":5,"blauw":["Lionel Messi","New York","Oliebol","Pirates of the Caribbean","Astronaut"],"geel":["Freddie Mercury","Veluwe","Kaassoufflé","Batman","Rechter"]},
+    {"id":6,"blauw":["Albert Einstein","Parijs","Drop","De Smurfen","Verpleegkundige"],"geel":["Doutzen Kroes","Ardennen","Rookworst","Minions","Boswachter"]},
+    {"id":7,"blauw":["Ali B","Groningen","Tompouce","Avatar","Makelaar"],"geel":["Nelson Mandela","Bahama's","Nasi goreng","Sesamstraat","Fysiotherapeut"]},
+    {"id":8,"blauw":["Rafael van der Vaart","Zandvoort","Kibbeling","Finding Nemo","Kok"],"geel":["Cleopatra","IJsland","Wentelteefje","The Voice","Tuinman"]},
+    {"id":9,"blauw":["Ed Sheeran","Maastricht","Vla","GTST","Buschauffeur"],"geel":["Napoleon","Curaçao","Balkenbrij","Wie is de Mol","Notaris"]},
+    {"id":10,"blauw":["Serena Williams","Kinderdijk","Kapsalon","Heel Holland Bakt","Elektricien"],"geel":["Elvis Presley","Rome","Ontbijtkoek","Peppa Pig","Journalist"]},
+    {"id":11,"blauw":["Barack Obama","Efteling","Haring","Boer zoekt Vrouw","Stewardess"],"geel":["Madonna","Loch Ness","Speculaas","Frozen 2","Schilder"]},
+    {"id":12,"blauw":["Usain Bolt","Volendam","Muisjes","The Masked Singer","Tolk"],"geel":["Willem van Oranje","Bermudadriehoek","Saté","Paw Patrol","Opticien"]},
+    {"id":13,"blauw":["Adele","Scheveningen","Kroepoek","Expeditie Robinson","Militair"],"geel":["Leonardo da Vinci","Tokio","Vlaflip","Studio Sport","Kraanmachinist"]},
+    {"id":14,"blauw":["Cristiano Ronaldo","Giethoorn","Bami","Baywatch","Apotheker"],"geel":["Marie Curie","Antarctica","Suikerbrood","Mr. Bean","Imker"]},
+    {"id":15,"blauw":["Snoop Dogg","Utrecht","Loempia","Friends","Scheidsrechter"],"geel":["Sinterklaas","Niagarawatervallen","Beschuit met muisjes","Lassie","Glazenwasser"]},
+    {"id":16,"blauw":["Femke Bol","Madurodam","Gevulde koek","Squid Game","Accountant"],"geel":["Mozart","Gibraltar","Shoarma","Flodder","Verhuizer"]},
+    {"id":17,"blauw":["Lady Gaga","Keukenhof","Knakworst","De Luizenmoeder","Kaasboer"],"geel":["Julius Caesar","Silicon Valley","Roti","Bassie en Adriaan","Loodsmedewerker"]},
+    {"id":18,"blauw":["Epke Zonderland","Vaticaanstad","Krentenbol","Stranger Things","Taxichauffeur"],"geel":["Frida Kahlo","Terschelling","Huzarensalade","Pippi Langkous","Dirigent"]},
+    {"id":19,"blauw":["Armin van Buuren","Chinese Muur","Bossche bol","Breaking Bad","Vuilnisman"],"geel":["Ruud Gullit","Marken","Uitsmijter","Klokhuis","Hovenier"]}
+  ]
+}
