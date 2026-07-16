@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dirty Seconds Admin</title>
+<style>
+:root{--bg:#14151c;--panel:#1f2130;--line:#30334a;--text:#f4f5fa;--muted:#9ba0bb;--yellow:#ffc61a;--blue:#2f6bff;--red:#ff5470;--green:#3ddc84}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif}main{max-width:760px;margin:auto;padding:24px 18px 60px}h1{margin:0 0 22px;font-size:30px}.brand{background:var(--yellow);color:#14151c;padding:2px 9px;border-radius:8px}.card{background:var(--panel);padding:18px;border-radius:16px;margin:14px 0}.hidden{display:none}label{display:block;color:var(--muted);font-weight:700;font-size:13px;margin:12px 0 6px}input,select,button{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);font:inherit}input,select{background:#171925;color:var(--text)}button{border:0;background:var(--yellow);color:#14151c;font-weight:800;margin-top:10px;cursor:pointer}.blue{background:var(--blue);color:white}.red{background:var(--red);color:white}.quiet{background:var(--line);color:white}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.roomCode{font-size:48px;letter-spacing:8px;font-weight:900;color:var(--yellow);text-align:center}.player{display:grid;grid-template-columns:1fr 150px 44px;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.player:last-child{border:0}.small{font-size:13px;color:var(--muted)}.status{min-height:22px;color:var(--muted);margin:8px 0}.ok{color:var(--green)}.error{color:var(--red)}@media(max-width:560px){.row{grid-template-columns:1fr}.player{grid-template-columns:1fr}.player button{width:auto}}
+</style>
+</head>
+<body><main>
+<h1><span class="brand">Dirty</span> Seconds Admin</h1>
+<section id="loginCard" class="card">
+  <label>E-mailadres</label><input id="email" type="email" value="simon.reede@gmail.com" autocomplete="email">
+  <label>Wachtwoord</label><input id="password" type="password" minlength="6" autocomplete="current-password">
+  <button id="login" class="blue">Inloggen</button>
+  <button id="register">Admin-account maken</button>
+  <p class="small">Na registratie moet je het e-mailadres verifiëren. Alleen simon.reede@gmail.com krijgt beheerrechten.</p>
+</section>
+<section id="adminPanel" class="hidden">
+  <div class="card"><div id="account"></div><button id="logout" class="quiet">Uitloggen</button></div>
+  <div class="card">
+    <h2>Nieuw spel</h2>
+    <div class="row"><button id="create">Nieuwe spelcode maken</button><button id="refresh" class="quiet">Lijst vernieuwen</button></div>
+    <div id="createdCode" class="roomCode"></div>
+  </div>
+  <div class="card">
+    <h2>Bestaande spellen</h2>
+    <select id="rooms"><option value="">Selecteer een spel</option></select>
+  </div>
+  <div id="roomPanel" class="card hidden">
+    <div id="roomCode" class="roomCode"></div>
+    <div id="roomMeta" class="small"></div>
+    <h3>Spelers en teams</h3><div id="players"></div>
+    <div class="row"><button id="start" class="blue">Spel starten</button><button id="lobby" class="quiet">Terug naar lobby</button></div>
+    <div class="row"><button id="reset" class="quiet">Scores resetten</button><button id="delete" class="red">Spel verwijderen</button></div>
+  </div>
+</section>
+<div id="status" class="status"></div>
+</main><script type="module" src="./admin.js"></script></body></html>
