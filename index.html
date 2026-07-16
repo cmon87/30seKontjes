@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>30 Sekontjes</title>
+  <title>Dirty Seconds</title>
   <style>
     body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #14151c; color: #f4f5fa; font-family: system-ui, sans-serif; }
     p { padding: 24px; text-align: center; }
   </style>
 </head>
 <body>
-  <p id="status">App wordt geladen…</p>
+  <p id="status">Dirty Seconds wordt geladen…</p>
   <script>
     (async () => {
       try {
         const paths = [
-          "app/index.part00",
-          "app/index.part01",
-          "app/index.part02",
-          "app/index.part03",
-          "app/index.part04",
-          "app/index.part05"
+          "app/index.part00", "app/index.part01", "app/index.part02",
+          "app/index.part03", "app/index.part04", "app/index.part05"
         ];
         const parts = await Promise.all(paths.map(async path => {
           const response = await fetch(path, { cache: "no-store" });
@@ -29,7 +25,48 @@
         }));
         const binary = atob(parts.join("").replace(/\s/g, ""));
         const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
-        const html = new TextDecoder("utf-8").decode(bytes);
+        let html = new TextDecoder("utf-8").decode(bytes);
+
+        html = html
+          .replace(/<title>.*?<\/title>/, "<title>Dirty Seconds</title>")
+          .replace('<div class="kop"><span class="dertig">30</span><h1>Sekontjes</h1></div>', '<div class="kop"><span class="dertig">Dirty</span><h1>Seconds</h1></div>')
+          .replace(/\n  <!-- Firebase Authentication -->[\s\S]*?\n  <!-- startscherm -->/, "\n  <!-- startscherm -->")
+          .replace('<div class="scherm" id="schermStart">', '<div class="scherm actief" id="schermStart">')
+          .replace(/\n    <div class="auth-info" id="authStatus"><\/div>/, "")
+          .replace(/\n    <button class="knop" id="knopNieuw">Nieuw potje maken<\/button>\n\n    <div class="scheiding">of doe mee<\/div>/, "")
+          .replace(/\n    <button class="knop stil" id="knopLogout">Uitloggen<\/button>/, "")
+          .replace(/Jouw naam/g, "Alias")
+          .replace(/Bijv\. Simon/g, "Bijv. Dirty Simon")
+          .replace(/Potjescode/g, "Spelcode")
+          .replace(/Potje verlaten/g, "Spel verlaten")
+          .replace(/Start het potje/g, "Start het spel")
+          .replace(/import \{\s*getAuth, onAuthStateChanged, createUserWithEmailAndPassword,\s*signInWithEmailAndPassword, signOut, updateProfile\s*\} from "https:\/\/www\.gstatic\.com\/firebasejs\/12\.16\.0\/firebase-auth\.js";/,
+            'import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";')
+          .replace('document.getElementById("knopRegistreer").addEventListener("click", registreer);', "")
+          .replace('document.getElementById("knopLogin").addEventListener("click", inloggen);', "")
+          .replace('document.getElementById("knopLogout").addEventListener("click", uitloggen);', "")
+          .replace('document.getElementById("knopNieuw").addEventListener("click", nieuwPotje);', "");
+
+        html = html.replace(/onAuthStateChanged\(auth, async user => \{[\s\S]*?\n\}\);\n\n<\/script>/,
+`onAuthStateChanged(auth, async user => {
+  if (!user) {
+    try { await signInAnonymously(auth); }
+    catch (error) { meld("Schakel Anonieme authenticatie in Firebase in."); }
+    return;
+  }
+  currentUser = user;
+  toon("schermStart");
+  const oudeCode = localStorage.getItem("sek_roomCode");
+  if (!oudeCode) return;
+  try {
+    const snap = await getDoc(roomRef(oudeCode));
+    if (snap.exists() && snap.data().spelers?.[user.uid]) verbindMetRoom(oudeCode);
+    else localStorage.removeItem("sek_roomCode");
+  } catch (_) { localStorage.removeItem("sek_roomCode"); }
+});
+
+</script>`);
+
         document.open();
         document.write(html);
         document.close();
