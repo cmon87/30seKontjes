@@ -1,18 +1,28 @@
-# 30 Sekontjes
+# Dirty Seconds
 
 Mobiele browsergame met Firebase Authentication en Cloud Firestore.
 
-## Huidige onderdelen
+## Apps
 
-- `kaarten.json`: kaartenset van het spel
-- `firestore.rules`: beveiligingsregels voor spelruimtes
-- `firebase.json`: configuratie voor Firestore Rules en Firebase Hosting
-- `FIREBASE_SETUP.md`: stappen voor web-appregistratie, e-mail/wachtwoord en deployment
+- `/`: spelersapp. Spelers vullen alleen een alias en vierletterige spelcode in. Firebase meldt hen op de achtergrond anoniem aan.
+- `/admin/`: beheerapp voor `simon.reede@gmail.com`. De beheerder maakt spellen aan, deelt teams in, start of reset spellen en kan spelers of ruimtes verwijderen.
 
-## Firebase-project
+## Firebase
 
+Project-ID: `sekontjes`  
 Projectnummer: `963419535029`
 
-De web-appconfiguratie moet nog uit Firebase Console worden gekopieerd naar de applicatiecode. Schakel daarnaast **Authentication > E-mail/wachtwoord** in en maak een Cloud Firestore-database aan.
+Benodigde Authentication-providers:
 
-Zie `FIREBASE_SETUP.md` voor de concrete stappen.
+- Anonymous voor spelers
+- Email/Password voor de beheerder
+
+Het admin-e-mailadres moet geverifieerd zijn. Publiceer na wijzigingen ook `firestore.rules`.
+
+## Belangrijke bestanden
+
+- `index.html`: startpunt spelersapp
+- `admin/index.html` en `admin/admin.js`: beheerapp
+- `kaarten.json`: kaartenset
+- `firestore.rules`: toegangsregels
+- `firebase.json`: Hosting- en Rules-configuratie
