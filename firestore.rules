@@ -1,9 +1,19 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isAdmin() {
+      return signedIn()
+        && request.auth.token.email == "simon.reede@gmail.com"
+        && request.auth.token.email_verified == true;
+    }
     match /rooms/{roomCode} {
-      function signedIn() { return request.auth != null; }
-      function isMember() { return signedIn() && resource.data.spelers[request.auth.uid] != null; }
+      function isMember() {
+        return signedIn()
+          && resource.data.spelers[request.auth.uid] != null;
+      }
       function joinsSelf() {
         return signedIn()
           && resource.data.meta.status == "LOBBY"
@@ -11,12 +21,10 @@ service cloud.firestore {
           && request.resource.data.spelers[request.auth.uid] != null;
       }
       allow get: if signedIn();
-      allow list: if false;
-      allow create: if signedIn()
-        && request.resource.data.meta.hostId == request.auth.uid
-        && request.resource.data.spelers[request.auth.uid] != null;
-      allow update: if isMember() || joinsSelf();
-      allow delete: if signedIn() && resource.data.meta.hostId == request.auth.uid;
+      allow list: if isAdmin();
+      allow create: if isAdmin();
+      allow update: if isAdmin() || isMember() || joinsSelf();
+      allow delete: if isAdmin();
     }
   }
 }
